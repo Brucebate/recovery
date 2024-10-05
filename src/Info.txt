@@ -1,0 +1,138 @@
+for using location feature in login Page I installed this package 
+npm install react-native-geolocation-service
+
+Add this lines on android/app/src/AndroidManifest.xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Problem no 1 -
+How Todays page will work --
+we will assign him 7 to 8 cases in which he can accept the case and can reject them
+what will happen when he click on todays cases he will be directed to the 
+TodaysCasespage which will show him 7 to 8 cases he can reject and accept the TodaysCasespage
+those cases who are rejected will go on to the rejected cases in status as well as in todays history rejected cases
+And the remaining cases will be shows in Todays cases
+
+
+
+
+************************************
+Problem no 2 -
+To add the "Accepted" and "Rejected" icons only on the TodaysCasesPage without affecting other pages that use the CaseListComponent, you can pass a prop to the CaseListComponent to indicate whether the page should display the icons or not.
+
+Here's the updated approach:
+Modify TodaysCasesPage to pass a new prop (e.g., showIcons) to the CaseListComponent.
+
+Update the CaseListComponent to conditionally render the icons when the showIcons prop is true.
+
+
+
+***********************************
+Problem no 3 -
+TextInput components are only responding to input and pulling 
+up the keyboard when you click on the placeholder.
+
+so what I did is just add style of input field 
+like input : {
+    flex: 1,  // so with the help of this i get rid from this
+}
+
+
+
+*************************************** 
+Problem no 3 --
+to make the cases not touchable in History section pages
+what I did is just create a prop inside the "CaseListComponent.js"
+and pass the prop in history section like
+<CaseListComponent isTouchale={false}>
+so with this I cant able to touch the cases there
+
+
+
+****************************************
+Problem no 4 ----
+User can only able to navigate to CasesDetailspage when he will accept the case 
+then only he will able to navigate to the details page
+how --- in TodaysCasesPage  i write a  function handle the acceptedIcon
+
+const handleAcceptCases = (acceptedCase) => {
+        // Update the accepted state for the specific case and hide the icons
+        setCases((prevCases) =>
+            prevCases.map((caseItem) =>
+                caseItem.id === acceptedCase.id
+                    ? { ...caseItem, isAccepted: true, isRejected: false, showIcons: false } // Add `showIcons: false`
+                    : caseItem
+            )
+        );
+    };
+In above code if i click on Accepted icon showIcons prop will become false and both 
+icon will get dissappear
+
+
+also i used if else condition for navigation if isAccepted is true then only 
+user can move to the 
+
+
+
+**********************************
+Problem no 5 ---
+
+what happening here is CasesDetailspage i am using the "HeaderComponent"
+so inside that component I need to fetch the data from the sampleCases 
+present inside the "TodaysCasesPage"  so what I did is
+
+casesDetails prop is already I have inside the TodaysCasesPage
+so I just pass that prop inside the "CaseDetailsPage"
+
+how? ---
+i use  "useRoute" as a route to get that prop
+
+CaseDetailsPage --
+    const route = useRoute();
+    const caseDetails = route.params.caseDetails
+
+HeaderComponent --
+    const HeaderComponent = ({ caseDetails }) => {
+//   const caseDetails = route?.params?.item || {}; // Default to empty object if not available
+  console.log('Case Details:', caseDetails);
+
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.customerName}>{caseDetails.customerName || 'No Customer Name'}</Text>
+  )
+    }
+
+
+
+********************************
+
+Problem no 5 ---
+
+Need to install package image picker to make image upload works
+
+npm install react-native-image-picker
+
+Need to install Date time select package 
+npm install @react-native-community/datetimepicker
+
+Need to install Checkbox package also because Chackbox has been removed from 
+the React native
+npm install @react-native-community/checkbox
+
+
+Need to install Picker for Dropdown menu in others Checkbox
+npm install @react-native-picker/picker
+
+
+****************************************
+
+
+
+
+
+
+

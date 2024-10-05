@@ -1,0 +1,11 @@
+Date - 25/09/24
+successfully created CasesDetailsPage with all three tabs 
+Personal, Loan and History 
+
+Status  -- done
+
+
+Date -25/09/24
+successfully created update disposition button add check in functionality
+Status -- done
+

@@ -1,0 +1,85 @@
+Req no 1. ----
+
+In todays cases page what I add is the CaseListComponent and 
+one more thing i have added that accept and reject icon
+which is used to accept and reject the cases when reject cases will go towards the 
+rejected cases in dashboard as well as in Todays History decline item
+
+
+Req no 2. ---- 
+
+No I have to make a pending page so what we have to do is 
+in pending cases we will show the cases who are accepted and not visit,
+PTP cases, Partiall paid cases it will not change untill the all pending 
+cases will not get resolve or get deleted from the database
+
+
+
+Req no 3. ---
+In case list there should be emi amount for all status but for 
+Partial Paid cases emi amount should be remaining amount 
+so I add one code line--
+
+const displayAmount = item.status === 'Partial Paid' ? item.remainingAmount : item.emi
+
+this code I write inside the CaseListComponent under render this code will be useful for 
+types of amount.
+
+
+
+Req no 4. ---
+
+Pending Cases and Follow Up cases are two different things because is pending cases there
+are status like PTP , Partial Paid, not visited and etc
+
+But in follow up cases  not visted will be not there.
+
+
+
+
+Req no 5. ---
+
+In CaseDetailsPage I am going to add one slider cum button which
+will help to check In then only he will able to get update disposition button
+
+To use Slider I need to add one dependencies for Slider
+
+npm install @react-native-community/slider
+import Slider from '@react-native-community/slider';
+
+status ----- "Not used"
+
+
+
+Req no 6. ----
+
+In CaseDetailsPage i have check in button what I want is when I click 
+on that button that button will change to updateDisposition button
+and after I click on that button it will redirect me to the 
+"UpdateDispositionPage"
+need to add some alert when I click on Check in button to avoid 
+accidential clicks by the user
+
+Req no 7 ---- 
+
+When I click on "UpdateDispositionButton" I naviagate to the 
+"CaseDetialsPage" in that page user can enter the details which he gather
+from the customer. In that page I have used 2 components 
+"DetailsFillComponent" and "SubmitDispositionComponent"
+inside "DetailsFillComponent" there are 4 checkboxes inside the checkboxes
+there are various input field so I just made that field required 
+so user cant able to update the disposition or submit the form without 
+filling the form required fields.
+if he tries to submit the form without filling he will get an alert 
+for that.
+
+
+
+
+
+
+
+
+
+
+
